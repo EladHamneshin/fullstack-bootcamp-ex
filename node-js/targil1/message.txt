@@ -1,0 +1,3 @@
+HI MY NAME IS ELAD HAMNESHIN I AM SITTING NEXT TO ORI SHULMAN
+hamneshin sitting shulman
+Vowels Count: [{"word":"hi","vowelCount":1},{"word":"my","vowelCount":0},{"word":"name","vowelCount":2},{"word":"is","vowelCount":1},{"word":"elad","vowelCount":2},{"word":"hamneshin","vowelCount":3},{"word":"I","vowelCount":1},{"word":"am","vowelCount":1},{"word":"sitting","vowelCount":2},{"word":"next","vowelCount":1},{"word":"to","vowelCount":1},{"word":"ori","vowelCount":2},{"word":"shulman","vowelCount":2}]
