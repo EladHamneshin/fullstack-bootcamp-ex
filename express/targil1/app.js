@@ -43,11 +43,19 @@ app.delete('/users/:uid', (req, res) => {
     res.send(data);
 })
 
-app.put('/users/:id', (req, res) => {
+app.put('/users/:uid', (req, res) => {
     const uid = req.params.uid;
-    const user = getUserById(uid);
-    
+    let user;
+    try{
+        user = getUserById(uid);
+    } catch(error){
+        res.send(error.message);
+    }
 
+    const {email, password} = req.body;
+    user.email = email;
+    user.password = password;
+    res.send(data);
 })
 
 app.listen(port, () => {
