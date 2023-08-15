@@ -10,7 +10,13 @@ fs.readFile('./' + path, 'utf8', (err, data) => {
         console.error(err);
         return;
     }
-    //check how many times the word appears in the text
+    //check how many times the word appears in the text.txt
     let count = 0;
+    let index = data.indexOf(word);
+    while (index != -1) {
+        count++;
+        index = data.indexOf(word, index + 1);
+    }
+    console.log(`The word ${word} appears ${count} times in the file ${path}`);
 
 });
