@@ -1,4 +1,7 @@
-const express = require('express');
+import express from 'express';
+import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt';
+
 const app = express();
 const port = 3000;
 
@@ -28,8 +31,19 @@ app.get('/users/:uid', (req, res) => {
     res.send(user);
 })
 
+app.post('/users/exist', (req, res) => {
+    const {email, password} = req.body;
+    const user = data.find(user => user.email === email && user.password === password);
+    if(user)
+        res.send("User is connected");
+    else
+        res.send(" wrong credentials");
+})
+
+
 app.post('/users', (req, res) => {
-    data.push(req.body);
+    const user = {...req.body, id: uuidv4()};
+    data.push(user);
     res.send(data);
 })
 
@@ -74,3 +88,4 @@ function deleteUserById(uid){
     const userIndex = data.indexOf(getUserById(uid));
     data.splice(userIndex, 1);
 }
+
