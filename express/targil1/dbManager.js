@@ -31,7 +31,7 @@ export function getUserById(userId) {
 }
 
 export function deleteUser(userId) {
-    const userIndex = data.indexOf(getUserById(userId));
+    let userIndex = getUserIndex(userId);
     data.splice(userIndex, 1);
     updateData().catch((err) => console.log(err.message));
 }
@@ -42,8 +42,7 @@ export function addUser(user) {
 }
 
 export function updateUser(userId, user) {
-    let userIndex = -1;
-    data.forEach((user, index) => { if (user.id === userId) userIndex = index; });
+    let userIndex = getUserIndex(userId);
     data[userIndex] = {...user};
     updateData().catch((err) => console.log(err.message));
 }
@@ -55,4 +54,11 @@ export function updateData() {
             else resolve();
         });
     });
+}
+
+function getUserIndex(userId) {
+    let userIndex = -1;
+    data.forEach((user, index) => { if (user.id === userId) userIndex = index; });
+    if (userIndex === -1) throw new Error("id not found");
+    return userIndex;
 }
