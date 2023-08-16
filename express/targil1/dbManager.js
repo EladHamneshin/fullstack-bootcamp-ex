@@ -2,10 +2,16 @@ import jsonFile from "jsonfile";
 
 let data = [];
 
-export async function initDb() {
-    return jsonFile.readFile(file)
-        .then(obj => data = obj.users)
-        .catch(error => console.error(error));
+export function initDb() {
+    return new Promise((resolve, reject) => {
+        jsonFile.readFile("./data.json", (err, obj) => {
+            if (err) reject(err);
+            else {
+                data = obj.users;
+                resolve();
+            }
+        });
+    })
 }
 
 export function getData() {
@@ -17,25 +23,36 @@ export function getUsersByEmail(email) {
 }
 
 
-export function getUserById(uid) {
-    const user = getData().find((user) => user.id === uid);
+export function getUserById(userId) {
+    console.log(getData());
+    const user = getData().find((user) => user.id === userId);
     if (!user) throw new Error("id not found");
     return user;
 }
 
-export function deleteUser(uid) {
-    const userIndex = data.indexOf(getUserById(uid));
+export function deleteUser(userId) {
+    const userIndex = data.indexOf(getUserById(userId));
     data.splice(userIndex, 1);
-    updateData();
+    updateData().catch((err) => console.log(err.message));
 }
 
 export function addUser(user) {
     data.push(user);
-    updateData();
+    updateData().catch((err) => console.log(err.message));
+}
+
+export function updateUser(userId, user) {
+    let userIndex = -1;
+    data.forEach((user, index) => { if (user.id === userId) userIndex = index; });
+    data[userIndex] = {...user};
+    updateData().catch((err) => console.log(err.message));
 }
 
 export function updateData() {
-    jsonFile.writeFile("./data.json", { users: data }, (err) => {
-        if (err) console.log(err.message);
+    return new Promise((resolve, reject) => {
+        jsonFile.writeFile("./data.json", { users: data }, (err) => {
+            if (err) reject(err.message);
+            else resolve();
+        });
     });
 }

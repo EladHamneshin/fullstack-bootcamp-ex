@@ -57,7 +57,7 @@ router.post("/", (req, res) => {
 router.delete("/:uid", (req, res) => {
     const uid = req.params.uid;
     try {
-        dbManager.deleteUserById(uid);
+        dbManager.deleteUser(uid);
     } catch (error) {
         res.send(error.message);
     }
@@ -78,6 +78,7 @@ router.put("/:uid", (req, res) => {
 
     bcrypt.hash(password, 10, (err, hash) => {
         user.password = hash;
+        dbManager.updateUser(user.id, user);
         res.send(dbManager.getData());
     });
 });
