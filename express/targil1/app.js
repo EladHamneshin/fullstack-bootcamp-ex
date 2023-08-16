@@ -1,12 +1,23 @@
 import express from "express";
-import jsonFile from "jsonfile";
-import { initServer } from "./server";
+import {initDb} from "./dbManager.js";
+import usersRouter from "./routes/users.js";
 
 const app = express();
 const port = 3000;
-const data = [];
 
-jsonFile.readFile("./data.json", (err, data) => {
-    if (err) console.log(err.message);
-    else console.log(data.users);
-});
+function initServer(app, port) {
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use("/users", usersRouter);
+
+    app.listen(port, () => {
+        console.log(`Server is up and running on port:${port}`);
+    });
+}
+
+async function runApp() {
+    await initDb();
+    initServer(app, port);
+}
+
+runApp();
