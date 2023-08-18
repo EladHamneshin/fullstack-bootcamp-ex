@@ -1,5 +1,5 @@
 import express from "express";
-import {initDb} from "./dbManager.js";
+import {readDb} from "./DL/dbManager.js";
 import {router} from "./routes/users.js";
 
 const app = express();
@@ -17,7 +17,7 @@ function initServer(app, port) {
 
 async function runApp() {
     try{
-        await initDb();
+        await readDb();
         initServer(app, port);
     }
     catch(err){
