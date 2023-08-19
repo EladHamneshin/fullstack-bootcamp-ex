@@ -1,5 +1,5 @@
 import express from "express";
-import usersController from "../controllers/usersController.js";
+import * as usersController from "../controllers/usersController.js";
 
 export const router = express.Router();
 
@@ -7,7 +7,7 @@ router.get("/", usersController.getUsers);
 
 router.get("/:uid", usersController.getUserById);
 
-router.post("/exist", usersController.getUserByEmail);
+router.post("/exist", usersController.isEmailPasswordExist);
 
 router.post("/", usersController.addUser);
 

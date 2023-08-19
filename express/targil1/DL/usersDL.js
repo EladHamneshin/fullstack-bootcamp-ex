@@ -39,7 +39,7 @@ export function updateUser(user) {
 //----------------------- DB operatins -----------------------------
 export function readDb() {
     return new Promise((resolve, reject) => {
-        jsonFile.readFile("./data.json", (err, obj) => {
+        jsonFile.readFile("./users.json", (err, obj) => {
             if (err) reject(err);
             else {
                 data = obj.users;
@@ -51,7 +51,7 @@ export function readDb() {
 
 export function updateDb() {
     return new Promise((resolve, reject) => {
-        jsonFile.writeFile("./data.json", { users: data }, (err) => {
+        jsonFile.writeFile("./users.json", { users: data }, (err) => {
             if (err) reject(err.message);
             else resolve();
         });
