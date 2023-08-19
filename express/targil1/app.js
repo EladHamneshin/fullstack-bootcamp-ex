@@ -1,6 +1,6 @@
 import express from "express";
-import {readDb} from "./DL/dbManager.js";
-import {router} from "./routes/users.js";
+import {readDb} from "./DL/usersDL.js";
+import {router} from "./routes/usersRouter.js";
 
 const app = express();
 const port = 3000;
