@@ -5,13 +5,13 @@ export const router = express.Router();
 
 router.get("/", usersController.getUsers);
 
-router.get("/:uid", usersController.getUserById);
+router.get("/:id", usersController.getUserById);
 
 router.post("/exist", usersController.isEmailPasswordExist);
 
 router.post("/", usersController.addUser);
 
-router.delete("/:uid", usersController.deleteUser);
+router.delete("/:id", usersController.deleteUser);
 
-router.put("/:uid", usersController.updateUser);
+router.put("/:id", usersController.updateUser);
 

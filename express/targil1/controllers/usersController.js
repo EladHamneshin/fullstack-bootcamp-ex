@@ -17,7 +17,7 @@ export function isEmailPasswordExist(req, res) {
     const { email, password } = req.body;
 
     usersBL.isEmailPasswordExist(email, password)
-        .then((result) => result? result.send("user is connected") : result.send("wrong credentials"))
+        .then((result) => result? res.send("user is connected") : res.send("wrong credentials"))
         .catch((err) => res.send(err.message));
 }
 
