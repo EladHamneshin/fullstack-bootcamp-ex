@@ -35,9 +35,10 @@ function omit<T, K extends keyof T>(obj: T, key: K): Omit<T, K> {
 
 // כתוב פונקציה שמקבלת אובייקט,מפתח וערך. הפונקציה תחזיר אובייקט חדש עם המפתח והערך שהוזנו לה כשדה חדש באובייקט שהוזן לה
 // השתמשו ב &
-function addField<T , K extends string, V>(obj: T, key: K, value: V): Record<K,V>  {
+function addField<T , K extends string, V>(obj: T, key: K, value: V): T & Record<K,V>  {
     const rec = {[key]: value} as Record<K,V> ; 
     return {...obj, ...rec};
 }
 
 console.log(addField({a: "a"}, "b", 3));
+
