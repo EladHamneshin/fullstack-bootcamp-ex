@@ -2,7 +2,8 @@ import { useState } from 'react'
 import Title from '../Title'
 
 export default function Header() {
-  const [count, setCount] = useState(0)
+  let [count, setCount] = useState(0)
+
   return (
     <header style={{display: 'flex'}}>
       <Title text="header text"/>
@@ -13,3 +14,4 @@ export default function Header() {
 
   )
 }
+

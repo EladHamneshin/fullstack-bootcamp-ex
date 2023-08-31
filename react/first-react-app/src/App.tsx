@@ -1,8 +1,8 @@
 
 import './App.css'
-import Header from './Header.js'
-import Main from './MyMain.js'
-import Footer from './Footer.js'
+import Header from './components/Header.js'
+import Main from './components/MyMain.js'
+import Footer from './components/Footer.js'
 
 const harryPotterBooks = [
   {
