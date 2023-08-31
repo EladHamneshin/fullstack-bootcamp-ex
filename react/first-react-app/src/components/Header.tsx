@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Title from './Title'
+import Title from '../Title'
 
 export default function Header() {
   const [count, setCount] = useState(0)

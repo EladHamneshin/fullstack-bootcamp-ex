@@ -1,5 +1,5 @@
-import Title from "./Title";
-import BookType from "./types/Book";
+import Title from "../Title";
+import BookType from "../types/Book";
 
 type BookProps = {
     book: BookType
