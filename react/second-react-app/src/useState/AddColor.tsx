@@ -2,7 +2,7 @@ type Props = {
     addColor: (color: string) => void;
 };
 
-export default function AddColor(props: Props) {
+export default function AddColor(_: Props) {
   return <div>
     <label> Add Color  </label>
     <input type="color">
