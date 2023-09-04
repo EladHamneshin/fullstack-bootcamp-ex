@@ -15,7 +15,7 @@ async function getUserTodos(userId: number) {
 export default function UserCard(props: Props) {
     const [todos, setTodos] = React.useState<Todo[]>([]);
 
-    return <div className="user" onClick={(event) => {
+    return <div className="user" onClick={(_) => {
         getUserTodos(props.user.id).then((data) => setTodos(data));
     } }>
     <div>{props.user.id}</div>

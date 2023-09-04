@@ -5,7 +5,6 @@
 // import Select from './components/Select'
 // import AddColor from './components/AddColor'
 
-
 // function App() {
   //   const [visability, setVisability] = useState(true)
   //   const [color, setColor] = useState('red')
@@ -24,13 +23,24 @@
     //   )
     // }
     
+import Header from "./useContext/targil2/Header"
+import Headline from "./useContext/targil2/Headline"
+import Main from "./useContext/targil2/Main"
+import ThemeContextProvider from "./useContext/targil2/ThemeContext"
+import UserContextProvider from "./useContext/targil2/UserContext"
     
-import UsersFromServer from "./useEffect/UsersFromServer"
 
 function App(){
-  return <>
-  <UsersFromServer/>
-  </>
+  return (
+    <>
+    <UserContextProvider>
+    <ThemeContextProvider>
+        <Main />
+      </ThemeContextProvider>
+    </UserContextProvider>
+    </>
+
+  )
 }
 
 export default App
