@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import Child from "./Child";
 import { TextContext } from "./TextContext";
 
 
 export default function Father() {
     const context = React.useContext(TextContext);
-    const { text, setText } = context!;
+    const {text, setText } = context!;
 
-    const temp = React.useRef<string>('');
+    const temp = useRef<string>('');
 
     return <>
             <Child/>
