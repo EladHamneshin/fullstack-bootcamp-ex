@@ -5,7 +5,7 @@ const config = {
     user: "postgres",
     database: "northwind ",
     host: "localhost",
-    password: "Kodcode2023",
+    password: "*********",
     port: "5432",
 }
 
